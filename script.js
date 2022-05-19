@@ -1,32 +1,34 @@
-const output = document.querySelector('#output');
-let isOnEdit;
-// fetch('  https://testapi.io/api/converse/resource/testapi', {
-//   method: 'POST',
-//   headers: {
-//     'Content-type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//     name: 'Gytis7',
-//     lastname: 'Juozenas3',
-//     age: 23
-//   })
-// })
-//   .then((response) => {
-//     if (response.ok) {
-//       console.log('ok');
-//       return response.json();
-//     } else {
-//       console.log('not okay');
-//     }
-//   })
-//   .then((result) => {
-//     console.log(result);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   })
+// const output = document.querySelector('#output');
+// let isOnEdit;
+
+  fetch('https://testapi.io/api/SurkusAPI/resource/PostsRepositoryPseudoDb', {
+  method: 'POST',
+  headers: {
+    'Content-type': 'application/json'
+  },
+  body: JSON.stringify({
+    Title: 'PirmasTitle',
+    Content: 'LoremLorem'
+  })
+})
+  .then((response) => {
+    if (response.ok) {
+      console.log('Connection Ok');
+      return response.json();
+    } else {
+      console.log('Connection not Ok');
+    }
+  })
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
+
 function getUsers() {
-  fetch('   https://testapi.io/api/converse/resource/testapi')
+  fetch('https://testapi.io/api/SurkusAPI/resource/PostsRepositoryPseudoDb')
   .then((res) => {
     if (res.ok) {
       return res.json();
@@ -34,6 +36,7 @@ function getUsers() {
   })
   .then(result => render(result.data)); 
 }
+
 function render(users) {
   users.forEach(user => {
     const div = document.createElement('div');
@@ -63,7 +66,7 @@ function render(users) {
   })
 }
 async function deleteUser(userId) {
-  const fethg = await fetch(`https://testapi.io/api/converse/resource/testapi/${userId}`, {
+  const fethg = await fetch(`https://testapi.io/api/SurkusAPI/resource/PostsRepositoryPseudoDb/${userId}`, {
     method: 'DELETE'
   })
   console.log(fethg);
@@ -72,4 +75,5 @@ async function deleteUser(userId) {
     getUsers();
   }
 }
-getUsers();
+//getUsers();
+//PostData();
